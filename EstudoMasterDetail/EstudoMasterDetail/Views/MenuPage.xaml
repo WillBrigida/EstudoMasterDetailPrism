@@ -4,15 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:nav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:c="clr-namespace:EstudoMasterDetail.Behaviors"
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="EstudoMasterDetail.Views.MenuPage">
 
     <MasterDetailPage.Resources>
         <ResourceDictionary>
-            <!--<local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />-->
+            <!--<c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />-->
         </ResourceDictionary>
     </MasterDetailPage.Resources>
 
+  
     <MasterDetailPage.Master>
         <ContentPage
             Title="Menu">
@@ -64,12 +67,12 @@
                 <!-- ###########################################-->
                 <!-- ###############  LISTA MENU ###############-->
 
-                <!--<ListView
+                <ListView
                     SeparatorVisibility="None"
                     ItemsSource="{Binding ListaMenu, Mode=TwoWay}"
                     HasUnevenRows="False">
 
-                    --><!-- ###########################################-->
+                    <!-- ###########################################-->
                     <!-- ################  Behaviors ##################-->
                     <!--<ListView.Behaviors>
                         <local:EventToCommandBehavior
@@ -78,8 +81,15 @@
                                 Command="{Binding NavegacaoMenuCommand, Mode=TwoWay}"
                                 Converter="{StaticResource SelectedItemConverter}" />
                     </ListView.Behaviors>-->
-                    <!-- ################ FIM  Behaviors ##############-->
-                    <!-- ###########################################--><!--
+                    
+                <!--<ListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped" 
+                                              Command="{Binding ItemTappedCommand}"
+                                      CommandParameter="MyParameter"/>
+                </ListView.Behaviors>-->
+
+                <!-- ################ FIM  Behaviors ##############-->
+                    <!-- ###########################################-->
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -112,7 +122,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
 
-                </ListView>-->
+                </ListView>
 
                 <!-- ############ FIM LISTA MENU ###############-->
                 <!-- ###########################################-->
@@ -146,12 +156,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!--<Label  
+                        <!--<Label  
                         Text="&#xf011;"
                         TextColor="Red"
                         Style="{StaticResource MainMenuIconsStyle}"/>-->
 
-                    <Label 
+                        <Label 
                         TextColor="Black"
                         Text="Sair" 
                         FontSize="17" 
