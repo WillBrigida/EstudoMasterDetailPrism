@@ -5,13 +5,14 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:nav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
     xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-    xmlns:c="clr-namespace:EstudoMasterDetail.Behaviors"
+    xmlns:local="clr-namespace:EstudoMasterDetail.Behaviors"
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="EstudoMasterDetail.Views.MenuPage">
 
     <MasterDetailPage.Resources>
         <ResourceDictionary>
-            <!--<c:ItemTappedEventArgsConverter x:Key="itemTappedEventArgsConverter" />-->
+            <local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <local:ItemTappedEventArgsToItemTappedConverter x:Key="ItemTappedConverter" />
         </ResourceDictionary>
     </MasterDetailPage.Resources>
 
@@ -74,19 +75,14 @@
 
                     <!-- ###########################################-->
                     <!-- ################  Behaviors ##################-->
-                    <!--<ListView.Behaviors>
+                    <ListView.Behaviors>
                         <local:EventToCommandBehavior
-                                
-                                EventName="ItemSelected" 
-                                Command="{Binding NavegacaoMenuCommand, Mode=TwoWay}"
-                                Converter="{StaticResource SelectedItemConverter}" />
-                    </ListView.Behaviors>-->
+                                EventName="ItemTapped" 
+                                Command="{Binding NavigationCommand, Mode=TwoWay}"
+                                Converter="{StaticResource ItemTappedConverter}" />
+                    </ListView.Behaviors>
                     
-                <!--<ListView.Behaviors>
-                    <b:EventToCommandBehavior EventName="ItemTapped" 
-                                              Command="{Binding ItemTappedCommand}"
-                                      CommandParameter="MyParameter"/>
-                </ListView.Behaviors>-->
+               
 
                 <!-- ################ FIM  Behaviors ##############-->
                     <!-- ###########################################-->
@@ -121,6 +117,13 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+
+                    <!--<ListView.Behaviors>
+                        <b:EventToCommandBehavior 
+                            EventName="ItemTapped" 
+                            Command="{Binding NavigacaoMenuCommand}"
+                            EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}" />
+                    </ListView.Behaviors>-->
 
                 </ListView>
 
