@@ -33,7 +33,7 @@ namespace EstudoMasterDetail
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("/MenuPage/MainPage");
+            await NavigationService.NavigateAsync("/MenuPage/NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

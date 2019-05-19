@@ -18,7 +18,6 @@ namespace EstudoMasterDetail.Droid
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //containerRegistry.RegisterSingleton<IMessageService, MessageService>();
         }
     }
 }
